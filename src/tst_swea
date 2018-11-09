@@ -1,0 +1,8 @@
+#~/bin/bash
+
+./shbaam_swea.py	\
+     ../input/GLDAS/GLDAS_VIC10_M/2002/GLDAS_VIC10_M/GLDAS_VIC10_M.A200204_200212.nc4	\
+     ../input/SERVIR_STK/NorthWestBD.shp   				\
+     ../output/SERVIR_STK/GLDAS.VIC.pnt_tst.shp				\
+     ../output/SERVIR_STK/timeseries_swea_NorthWestBD_tst.csv		\
+     ../output/SERVIR_STK/map_swea_NorthWestBD_tst.nc
