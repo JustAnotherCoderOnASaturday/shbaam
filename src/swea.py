@@ -180,7 +180,7 @@ if __name__ == '__main__':
 
     #point_features=fiona.open(shb_pnt_shp, 'r')		##shb_pnt_lay
     #index = createSpatialIndex(point_features)
-    #find_intersection(output_pnt_shp, index, point_features)
+    #(intersect_tot, intersect_lon, intersect_lat) = find_intersection(output_pnt_shp, index, point_features)
 
 
 
