@@ -167,7 +167,7 @@ if __name__ == '__main__':
     gld_fill = netCDF4.default.fillvals['f4']
     if 'RUNSF' in f.variables:
 	gld_fill = var._FillValue
-	print(' - The fill value for RUNSF is: '+str(ZS_grc_fil))
+	print(' - The fill value for RUNSF is: '+str(gld_fill))
     else:
 	gld_fill = None
 
