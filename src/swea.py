@@ -24,7 +24,7 @@ def check_command_line_arg():
         print('ERROR - 5 and only 5 arguments can be used')
         raise SystemExit(22) 
 
-    for shb_file in sys.argv[2:5]:
+    for shb_file in sys.argv[1:3]:	#Checks input files
 	try:
             with open(shb_file) as file:
 	        pass
@@ -61,12 +61,12 @@ def createShapeFile(gld_dim_lat_length, gld_dim_lon_length, lon_dimension_array,
 					 crs=shapeFilePoint_crs,	\
 					 schema=shapeFile_schema) as pointFile:        
 	for JS_gld_lon in range(gld_dim_lon_length):
-	    gld_lon = gld_lon_dimension_array[JS_gld_lon]
+	    gld_lon = gld_lon_dimension_array[JS_gld_lon]		#Screewed up -> Array
 	    if (gld_lon > 180):
 		#Shifts GLD range [0:360] to [-180:180]
-		gld_lon -= 180
+		gld_lon -= 360
 	    for JS_gld_lat in range(gld_dim_lat_length):
-		gld_lat = gld_dim_lat_length[JS_gld_lat]
+		gld_lat = gld_dim_lat_length[JS_gld_lat]		#Screwed up -> Array
 		shapeFilePoint_Prepared={'JS_gld_lon':JS_gld_lon,
 					'JS_gld_lat':JS_gld_lat}
 		shapeFilePoint_geometry=shapely.geometry.mapping(\
@@ -108,8 +108,8 @@ def find_intersection(polygon, index, points):
 	    shape_feature = points[point_id]
 	    shape_file    = shapely.geometry(shape_feature['geometry'])
             if shape_prep.contains(shape_file):
-                JS_dom_lon=shb_pnt_fea['properties']['JS_grc_lon']##CHANGE NAME !!!????
-                JS_dom_lat=shb_pnt_fea['properties']['JS_grc_lat']
+                JS_dom_lon=shape_feature['properties']['JS_gld_lon']##CHANGE NAME !!!????
+                JS_dom_lat=shape_feature['properties']['JS_gld_lat']
                 intersect_lon.append(JS_dom_lon)
                 intersect_lat.append(JS_dom_lat)
                 intersect_tot += 1
